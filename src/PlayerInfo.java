@@ -11,43 +11,38 @@ public class PlayerInfo {
 
 	public static void getPlayer(Scanner sncr) {
 
-		System.out.println("Are you a new player?(y/n) Type \"stats\" to view player stats");
-		String yesNo = scnr.next();
-		scnr.nextLine();
-		String playerName = null;
-		
-		
-		if (yesNo.equals("y")) {
-			System.out.println("Type your name");
-			playerName = scnr.nextLine();
-			players.add(playerName);
-		}
-		else if(yesNo.equals("n")){
-			System.out.println("What is your player name?");
-			getplayerStats ();
-			playerName = scnr.nextLine();
-			if (players.indexOf(playerName) == -1){
-				System.out.println("There is no such player");
-			}
-			else {
-				existingPlayer = true;
-				playerIndex = players.indexOf(playerName);
-			}
-			
-			
-		}
-		else if(yesNo.equals("stats")) {
-			System.out.println("Would you like to see player stats?");
-			yesNo = scnr.nextLine();
-			if (yesNo.equals("y")) {
-				getplayerStats();
-				System.out.println(players);
-				System.out.println("Batting Averages: \n" + battingAverage);
-				System.out.println("Stuggling Percentages:y \n" + sluggingAverage);
-			}
-		}
 
-	}
+		System.out.println("1. New Player 2. Existing Player 3. Player Stats");
+		String playerName = null;
+		int userChoice = Validation.inputValidation();
+		switch (userChoice) {
+		case 1: System.out.println("Type your name");
+				playerName = scnr.nextLine();
+				players.add(playerName);
+			break;
+		case 2: System.out.println("What is your player name?");
+				getplayerStats ();
+				playerName = scnr.nextLine();
+				if (players.indexOf(playerName) == -1){
+					System.out.println("There is no such player, adding new player" + " " + playerName);
+				}
+				players.add(playerName);
+			break;
+		case 3:
+			getplayerStats();
+			System.out.println(players);
+			System.out.println("Batting Averages: \n" + battingAverage);
+			System.out.println("Sluggling Percentages:y \n" + sluggingAverage);
+			String[] args = null;
+			Main.main(args);
+	
+			break;
+		default:
+			System.out.println("Choose 1 2 or 3");
+			}
+		}
+	
+
 	
 	public static void getplayerStats () {
 		players.add("DeAnte"); 	battingAverage.add(10.0);	sluggingAverage.add(5.0);

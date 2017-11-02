@@ -5,7 +5,8 @@ public class Calculate {
 
 	public static int getBatNum(Scanner scnr) {
 		System.out.println("How many times would you like to bat?");
-		return scnr.nextInt();
+		return Validation.inputValidation();
+		
 
 	}
 
@@ -53,6 +54,6 @@ public class Calculate {
 			PlayerInfo.sluggingAverage.add(percentage);
 			System.out.println("Batting average:" + " " + average);
 			System.out.println("Slugging Percentage:" + " " + percentage);
-	}
-	}
+			}
+		}
 }
